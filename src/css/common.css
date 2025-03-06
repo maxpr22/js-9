@@ -16,3 +16,78 @@ img {
   display: block;
   max-width: 100%;
 }
+
+.timer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-family: 'Arial', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #333;
+  color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  width: 80px;
+}
+
+.value {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.label {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #bbb;
+}
+
+
+#datetime-picker {
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid #333;
+  border-radius: 8px;
+  text-align: center;
+  outline: none;
+  transition: 0.3s;
+}
+
+#datetime-picker:focus {
+  border-color: #1aa6f7;
+  box-shadow: 0 0 10px rgba(35, 177, 243, 0.5);
+}
+
+button[data-start] {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background: #1aa6f7;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button[data-start]:hover {
+  background: #e68900;
+  transform: scale(1.05);
+}
+
+button[data-start]:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
