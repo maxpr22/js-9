@@ -14,8 +14,8 @@ const options = {
         }
         refs.btnStart.removeAttribute('disabled');
         Notiflix.Notify.success('Date was picked');
-      },
-    };
+    },
+};
 
 flatpickr('#datetime-picker', options);
 
@@ -27,15 +27,15 @@ const refs = {
     minutes: document.querySelector('[data-minutes]'),
     seconds: document.querySelector('[data-seconds]'),
     timer: document.querySelector('.timer')
-  };
+};
 
-refs.btnStart.setAttribute("disabled", true)
+refs.btnStart.setAttribute("disabled", true);
 
 const timer = {
     intervalId: null,
     isActive: false,
-    start(){
-        if(this.isActive){
+    start() {
+        if (this.isActive) {
             return;
         }
         const startTime = new Date(refs.inputTime.value).getTime();
@@ -47,31 +47,31 @@ const timer = {
             const time = convertMs(difTime);
 
             updateTimer(time);
-            if(difTime <= 0 ){
+            if (difTime <= 0) {
                 updateTimer();
-                clearInterval(this.intervalId)
-                this.isActive = false
+                clearInterval(this.intervalId);
+                this.isActive = false;
                 Notiflix.Notify.success('Time is out');
             }
-        }, 1000)
+        }, 1000);
     },
+};
+
+function updateTimer({ days = "00", hours = "00", minutes = "00", seconds = "00" } = {}) {
+    refs.days.textContent = days;
+    refs.hours.textContent = hours;
+    refs.minutes.textContent = minutes;
+    refs.seconds.textContent = seconds;
 }
 
-function updateTimer({ days = 0, hours = 0, minutes = 0, seconds = 0 } = {}){
-    refs.days.textContent = `${days}`;
-    refs.hours.textContent = `${hours}`;
-    refs.minutes.textContent = `${minutes}`;
-    refs.seconds.textContent = `${seconds}`;
-}
-
-refs.btnStart.addEventListener('click', ()=>{
+refs.btnStart.addEventListener('click', () => {
     refs.btnStart.setAttribute("disabled", true);
     timer.start();
-})
+});
 
-function addLeadingZero(value){
+function pad(value) {
     return String(value).padStart(2, '0');
-  }
+}
 
 function convertMs(ms) {
     const second = 1000;
@@ -79,16 +79,10 @@ function convertMs(ms) {
     const hour = minute * 60;
     const day = hour * 24;
   
-    const days = Math.floor(ms / day);
-    const hours = Math.floor((ms % day) / hour);
-    const minutes = Math.floor(((ms % day) % hour) / minute);
-    const seconds = Math.floor((((ms % day) % hour) % minute) / second);
+    const days = pad(Math.floor(ms / day));
+    const hours = pad(Math.floor((ms % day) / hour));
+    const minutes = pad(Math.floor(((ms % day) % hour) / minute));
+    const seconds = pad(Math.floor((((ms % day) % hour) % minute) / second));
   
     return { days, hours, minutes, seconds };
-  }
-  
-
-
-
-
-
+}
