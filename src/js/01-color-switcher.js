@@ -1,5 +1,5 @@
 const refs = {
-  buttonStart: document.querySelector('button[data-start]'),
+  buttonStart: document.querySelector('button[data-sstart]'),
   buttonStop: document.querySelector('button[data-stop]'),
   body: document.querySelector('body'),
 };
